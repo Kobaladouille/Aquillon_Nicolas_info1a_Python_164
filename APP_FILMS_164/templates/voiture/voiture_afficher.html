@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %} Afficher GENRES {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>
+				<center><br>
+				Gestion de stock de voitures
+				</center>
+			</h1>
+            <table class="table table-bordered table-sm">
+            {% if data %}
+                <thead>
+                    <tr>
+                        <th class="align-middle">
+                            Id
+                        </th>
+                        <th class="align-middle">
+                            Marque
+                        </th>
+                        <th class="align-middle">
+							Modèle
+                        </th>
+                        <th class="align-middle">
+							Chevaux
+                        </th>
+                    </tr>
+                </thead>
+            {% endif %}
+
+            {% for row in data %}
+				<tbody>
+					<tr>
+						<td class="align-middle">
+							{{ row.id_voiture }}
+						</td>
+						<td class="align-middle">
+							{{ row.marque }}
+						</td>
+						<td class="align-middle">
+							{{ row.modele }}
+						</td>
+						<td class="align-middle">
+							{{ row.chevaux }}
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-primary" href="{{ url_for('genres_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-warning" href="{{ url_for('genre_update_wtf', id_genre_btn_edit_html=row.id_voiture) }}" role="button">Edit</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-danger" href="{{ url_for('genre_delete_wtf', id_genre_btn_delete_html=row.id_voiture) }}" role="button">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+            {% else %}
+				<tbody>
+					<tr>
+						<td>
+							Aucun genre.
+						</td>
+						<td>
+							<a class="btn btn-primary" href="{{ url_for('genres_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+					</tr>
+				</tbody>
+            {% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
