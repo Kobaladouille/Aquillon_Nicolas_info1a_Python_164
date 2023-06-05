@@ -32,7 +32,7 @@ def films_genres_afficher(id_film_sel):
     if request.method == "GET":
         try:
             with DBconnection() as mc_afficher:
-                strsql_genres_films_afficher_data = """SELECT t_voiture.id_voiture, t_voiture.marque, t_voiture.modele, t_voiture.chevaux, t_entretien.description_entretien 
+                strsql_genres_films_afficher_data = """SELECT t_voiture.id_voiture, t_voiture.marque, t_voiture.modele, t_voiture.chevaux, t_entretien.description_entretien, t_entretien.prix_entretien, t_entretien.garage_entretien
                 FROM t_voiture
                 JOIN t_voiture_avoir_entretien ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture 
                 JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien;
@@ -276,20 +276,20 @@ def genres_films_afficher_data(valeur_id_film_selected_dict):
     print("valeur_id_film_selected_dict...", valeur_id_film_selected_dict)
     try:
 
-        strsql_film_selected = """SELECT id_film, nom_film, duree_film, description_film, cover_link_film, date_sortie_film, GROUP_CONCAT(id_genre) as GenresFilms FROM t_genre_film
-                                        INNER JOIN t_film ON t_film.id_film = t_genre_film.fk_film
-                                        INNER JOIN t_genre ON t_genre.id_genre = t_genre_film.fk_genre
-                                        WHERE id_film = %(value_id_film_selected)s"""
+        strsql_film_selected = """SELECT id_entretien, description_entretien, GROUP_CONCAT(id_voiture) as GenresFilms FROM t_voiture_avoir_entretien
+                                        INNER JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien
+                                        INNER JOIN t_voiture ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture
+                                        WHERE id_entretien = %(value_id_film_selected)s"""
 
-        strsql_genres_films_non_attribues = """SELECT id_genre, intitule_genre FROM t_genre WHERE id_genre not in(SELECT id_genre as idGenresFilms FROM t_genre_film
-                                                    INNER JOIN t_film ON t_film.id_film = t_genre_film.fk_film
-                                                    INNER JOIN t_genre ON t_genre.id_genre = t_genre_film.fk_genre
-                                                    WHERE id_film = %(value_id_film_selected)s)"""
+        strsql_genres_films_non_attribues = """SELECT id_voiture, marque FROM t_voiture WHERE id_voiture not in(SELECT id_voiture as idGenresFilms FROM t_voiture_avoir_entretien
+                                                    INNER JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien
+                                                    INNER JOIN t_voiture ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture
+                                                    WHERE id_entretien = %(value_id_film_selected)s)"""
 
-        strsql_genres_films_attribues = """SELECT id_film, id_genre, intitule_genre FROM t_genre_film
-                                            INNER JOIN t_film ON t_film.id_film = t_genre_film.fk_film
-                                            INNER JOIN t_genre ON t_genre.id_genre = t_genre_film.fk_genre
-                                            WHERE id_film = %(value_id_film_selected)s"""
+        strsql_genres_films_attribues = """SELECT id_entretien, id_voiture FROM t_voiture_avoir_entretien
+                                            INNER JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien
+                                            INNER JOIN t_voiture ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture
+                                            WHERE id_entretien = %(value_id_film_selected)s"""
 
         # Du fait de l'utilisation des "context managers" on accède au curseur grâce au "with".
         with DBconnection() as mc_afficher:

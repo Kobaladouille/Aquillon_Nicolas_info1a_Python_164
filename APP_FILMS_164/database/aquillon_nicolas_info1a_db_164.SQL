@@ -40,17 +40,19 @@ USE `aquillon_nicolas_info1a_db_164`;
 CREATE TABLE IF NOT EXISTS `t_entretien` (
   `id_entretien` int NOT NULL AUTO_INCREMENT,
   `description_entretien` varchar(50) DEFAULT NULL,
+  `prix_entretien` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `garage_entretien` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_entretien`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table aquillon_nicolas_info1a_db_164.t_entretien : ~4 rows (environ)
-INSERT INTO `t_entretien` (`id_entretien`, `description_entretien`) VALUES
-	(1, 'test1'),
-	(2, 'test2'),
-	(3, 'test3'),
-	(4, 'test4'),
-	(5, 'test5'),
-	(6, 'test45');
+-- Listage des données de la table aquillon_nicolas_info1a_db_164.t_entretien : ~6 rows (environ)
+INSERT INTO `t_entretien` (`id_entretien`, `description_entretien`, `prix_entretien`, `garage_entretien`) VALUES
+	(1, 'test1', '300', 'Morges'),
+	(2, 'test2', '6778', 'Lausanne'),
+	(3, 'test3', '36', 'Ecublens'),
+	(4, 'test4', '235', 'Nyon'),
+	(5, 'test5', '253', 'Rolle'),
+	(6, 'test45', '574', 'Fribourg');
 
 -- Listage de la structure de table aquillon_nicolas_info1a_db_164. t_voiture
 CREATE TABLE IF NOT EXISTS `t_voiture` (
@@ -59,9 +61,9 @@ CREATE TABLE IF NOT EXISTS `t_voiture` (
   `modele` varchar(50) DEFAULT NULL,
   `chevaux` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_voiture`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table aquillon_nicolas_info1a_db_164.t_voiture : ~6 rows (environ)
+-- Listage des données de la table aquillon_nicolas_info1a_db_164.t_voiture : ~7 rows (environ)
 INSERT INTO `t_voiture` (`id_voiture`, `marque`, `modele`, `chevaux`) VALUES
 	(1, 'Fiat', 'Abrath', '500'),
 	(2, 'Ferrari', 'F40', '700'),
@@ -69,7 +71,8 @@ INSERT INTO `t_voiture` (`id_voiture`, `marque`, `modele`, `chevaux`) VALUES
 	(4, 'Kia', 'Sport', '170'),
 	(5, 'Renaut', '5c', '200'),
 	(24, 'mercedes', 'classa', '450'),
-	(25, 'etstmarque', 'testmodel', '123');
+	(25, 'etstmarque', 'testmodel', '123'),
+	(26, 'wdwd', 'wdwd', '12');
 
 -- Listage de la structure de table aquillon_nicolas_info1a_db_164. t_voiture_avoir_entretien
 CREATE TABLE IF NOT EXISTS `t_voiture_avoir_entretien` (
