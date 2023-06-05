@@ -29,7 +29,7 @@ USE aquillon_nicolas_info1a_db_164;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 oui */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- Listage de la structure de la base pour aquillon_nicolas_info1a_db_164
@@ -41,9 +41,16 @@ CREATE TABLE IF NOT EXISTS `t_entretien` (
   `id_entretien` int NOT NULL AUTO_INCREMENT,
   `description_entretien` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_entretien`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table aquillon_nicolas_info1a_db_164.t_entretien : ~0 rows (environ)
+-- Listage des données de la table aquillon_nicolas_info1a_db_164.t_entretien : ~4 rows (environ)
+INSERT INTO `t_entretien` (`id_entretien`, `description_entretien`) VALUES
+	(1, 'test1'),
+	(2, 'test2'),
+	(3, 'test3'),
+	(4, 'test4'),
+	(5, 'test5'),
+	(6, 'test45');
 
 -- Listage de la structure de table aquillon_nicolas_info1a_db_164. t_voiture
 CREATE TABLE IF NOT EXISTS `t_voiture` (
@@ -52,9 +59,17 @@ CREATE TABLE IF NOT EXISTS `t_voiture` (
   `modele` varchar(50) DEFAULT NULL,
   `chevaux` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_voiture`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table aquillon_nicolas_info1a_db_164.t_voiture : ~0 rows (environ)
+-- Listage des données de la table aquillon_nicolas_info1a_db_164.t_voiture : ~6 rows (environ)
+INSERT INTO `t_voiture` (`id_voiture`, `marque`, `modele`, `chevaux`) VALUES
+	(1, 'Fiat', 'Abrath', '500'),
+	(2, 'Ferrari', 'F40', '700'),
+	(3, 'Nissan', 'Micra', '70'),
+	(4, 'Kia', 'Sport', '170'),
+	(5, 'Renaut', '5c', '200'),
+	(24, 'mercedes', 'classa', '450'),
+	(25, 'etstmarque', 'testmodel', '123');
 
 -- Listage de la structure de table aquillon_nicolas_info1a_db_164. t_voiture_avoir_entretien
 CREATE TABLE IF NOT EXISTS `t_voiture_avoir_entretien` (
@@ -66,9 +81,15 @@ CREATE TABLE IF NOT EXISTS `t_voiture_avoir_entretien` (
   KEY `fk_entretien` (`fk_entretien`),
   CONSTRAINT `FK_t_voiture_avoir_entretien_t_entretien` FOREIGN KEY (`fk_entretien`) REFERENCES `t_entretien` (`id_entretien`),
   CONSTRAINT `FK_t_voiture_avoir_entretien_t_voiture` FOREIGN KEY (`fk_voiture`) REFERENCES `t_voiture` (`id_voiture`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table aquillon_nicolas_info1a_db_164.t_voiture_avoir_entretien : ~0 rows (environ)
+-- Listage des données de la table aquillon_nicolas_info1a_db_164.t_voiture_avoir_entretien : ~4 rows (environ)
+INSERT INTO `t_voiture_avoir_entretien` (`id_voiture_entretien`, `fk_voiture`, `fk_entretien`) VALUES
+	(1, 1, 1),
+	(2, 2, 2),
+	(3, 3, 3),
+	(4, 4, 4),
+	(5, 5, 5);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
