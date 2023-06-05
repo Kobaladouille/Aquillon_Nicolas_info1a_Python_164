@@ -18,7 +18,7 @@ from APP_FILMS_164 import app
 from APP_FILMS_164.essais_wtf_forms.wtf_forms_1 import MonPremierWTForm
 
 
-@app.route("/mon_premier_wtform", methods=['GET', 'POST'])
+@app.route("/connexion", methods=['GET', 'POST'])
 def mon_premier_wtform():
     form = MonPremierWTForm()
     if form.validate_on_submit():
@@ -26,6 +26,4 @@ def mon_premier_wtform():
               f"nepascliquer={form.case_cocher_npc.data}, "
               f"{form.nom_genre_wtf.data}", "success")
         return redirect('/homepage')
-    else:
-        flash(f"page de connexion de EntretienVoiture")
     return render_template('zzz_essais_om_104/essai_form_login.html', title='Mon joli premier WTF', form=form)

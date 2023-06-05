@@ -17,7 +17,7 @@ from wtforms.validators import Regexp
 
 
 class MonPremierWTForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    username = StringField('Username', validators=[DataRequired(message="Nom d'utilisateur indispensable !")])
     password = PasswordField('Password', validators=[DataRequired(message="Mot de passe indispensable !")])
 
     nom_genre_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
