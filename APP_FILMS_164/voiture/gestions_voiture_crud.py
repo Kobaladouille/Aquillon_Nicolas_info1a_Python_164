@@ -100,14 +100,11 @@ def genres_ajouter_wtf():
         try:
             if form.validate_on_submit():
 
-                name_genre_wtf = form.nom_genre_wtf.data
-                name_genre = name_genre_wtf.lower()
+                name_genre = form.nom_genre_wtf.data
 
-                name_modele_wtf = form.nom_modele_wtf.data
-                name_modele = name_modele_wtf.lower()
+                name_modele = form.nom_modele_wtf.data
 
-                name_chevaux_wtf = form.nom_chevaux_wtf.data
-                name_chevaux = name_chevaux_wtf.lower()
+                name_chevaux = form.nom_chevaux_wtf.data
 
                 valeurs_insertion_dictionnaire = {"value_intitule_genre": name_genre,
                                                   "value_intitule_nodele": name_modele,

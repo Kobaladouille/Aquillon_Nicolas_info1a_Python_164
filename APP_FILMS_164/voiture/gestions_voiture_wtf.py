@@ -8,7 +8,8 @@ from wtforms import StringField, DateField
 from wtforms import SubmitField
 from wtforms.validators import Length, InputRequired, DataRequired
 from wtforms.validators import Regexp
-
+from wtforms.validators import Length, InputRequired, NumberRange, DataRequired
+from wtforms import StringField, IntegerField, DateField
 
 class FormWTFAjouterGenres(FlaskForm):
     """
@@ -64,15 +65,15 @@ class FormWTFUpdateGenre(FlaskForm):
                                                                                          "apostrophe, de double trait "
                                                                                          "union")
                                                                           ])
-    nom_voiture_chevaux_update_wtf = StringField("Modifier le prix de la voiture ", validators=[Length(min=2, max=20, message="min 2 max 20"),
-                                                                          Regexp(nom_genre_update_regexp,
-                                                                                 message="Pas de chiffres, de "
-                                                                                         "caractères "
-                                                                                         "spéciaux, "
-                                                                                         "d'espace à double, de double "
-                                                                                         "apostrophe, de double trait "
-                                                                                         "union")
-                                                                          ])
+    nom_voiture_chevaux_update_wtf = IntegerField("Modifier les chevaux de la voiture ", validators=[NumberRange(min=1, max=5000,
+                                                                                            message=u"Min %(min)d et "
+                                                                                                    u"max %(max)d "
+                                                                                                    u"Selon Wikipédia "
+                                                                                                    u"L'Incendie du "
+                                                                                                    u"monastère du "
+                                                                                                    u"Lotus rouge "
+                                                                                                    u"durée 1620 "
+                                                                                                    u"min")])
     submit = SubmitField("Modifier la voiture")
 
 
