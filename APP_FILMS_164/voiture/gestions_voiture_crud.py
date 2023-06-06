@@ -166,18 +166,23 @@ def genre_update_wtf():
         if form_update.validate_on_submit():
             # Récupèrer la valeur du champ depuis "voiture_update_wtf.html" après avoir cliqué sur "SUBMIT".
             # Puis la convertir en lettres minuscules.
-            name_genre_update = form_update.nom_genre_update_wtf.data
-            name_genre_update = name_genre_update.lower()
-            date_genre_essai = form_update.date_genre_wtf_essai.data
+            name_voiture_marque_update = form_update.nom_genre_update_wtf.data
+            name_voiture_modele_update = form_update.date_genre_wtf_essai.data
+            name_voiture_chevaux_update = form_update.nom_voiture_chevaux_update_wtf.data
 
             valeur_update_dictionnaire = {"value_id_genre": id_genre_update,
-                                          "value_name_modele": name_genre_update,
-                                          "value_name_marque": date_genre_essai
+                                          "value_name_modele_update": name_voiture_marque_update,
+                                          "value_name_marque_update": name_voiture_modele_update,
+                                          "value_name_chevaux_update": name_voiture_chevaux_update,
                                           }
             print("valeur_update_dictionnaire ", valeur_update_dictionnaire)
 
-            str_sql_update_intitulegenre = """UPDATE t_voiture SET marque = %(value_name_modele)s, 
-            date_ins_genre = %(value_name_marque)s WHERE id_voiture = %(value_id_genre)s """
+            str_sql_update_intitulegenre = """UPDATE t_voiture SET 
+                marque = %(value_name_modele_update)s, 
+                modele = %(value_name_marque_update)s,
+                chevaux = %(value_name_chevaux_update)s
+                WHERE id_voiture = %(value_id_genre)s; """
+
             with DBconnection() as mconn_bd:
                 mconn_bd.execute(str_sql_update_intitulegenre, valeur_update_dictionnaire)
 
@@ -186,7 +191,7 @@ def genre_update_wtf():
 
             # afficher et constater que la donnée est mise à jour.
             # Affiche seulement la valeur modifiée, "ASC" et l'"id_genre_update"
-            return redirect(url_for('genres_afficher', order_by="ASC", id_genre_sel=id_genre_update))
+            return redirect(url_for('genres_afficher', order_by="ASC", id_genre_sel=0))
         elif request.method == "GET":
             # Opération sur la BD pour récupérer "id_genre" et "intitule_genre" de la "t_voiture"
             str_sql_id_genre = "SELECT id_voiture, marque, modele, chevaux FROM t_voiture " \
@@ -201,6 +206,9 @@ def genre_update_wtf():
 
             # Afficher la valeur sélectionnée dans les champs du formulaire "voiture_update_wtf.html"
             form_update.nom_genre_update_wtf.data = data_nom_genre["marque"]
+            form_update.date_genre_wtf_essai.data = data_nom_genre["modele"]
+            form_update.nom_voiture_chevaux_update_wtf.data = data_nom_genre["chevaux"]
+
 
     except Exception as Exception_genre_update_wtf:
         raise ExceptionGenreUpdateWtf(f"fichier : {Path(__file__).name}  ;  "
@@ -231,6 +239,9 @@ def genre_delete_wtf():
     btn_submit_del = None
     # L'utilisateur vient de cliquer sur le bouton "DELETE". Récupère la valeur de "id_genre"
     id_genre_delete = request.values['id_genre_btn_delete_html']
+    name_marque_delete = request.values['id_genre_btn_delete_html']
+    name_modele_delete =request.values['id_genre_btn_delete_html']
+    name_chevaux_delete =request.values['id_genre_btn_delete_html']
 
     # Objet formulaire pour effacer le genre sélectionné.
     form_delete = FormWTFDeleteGenre()
@@ -253,10 +264,20 @@ def genre_delete_wtf():
                 btn_submit_del = True
 
             if form_delete.submit_btn_del.data:
-                valeur_delete_dictionnaire = {"value_id_genre": id_genre_delete}
+                valeur_delete_dictionnaire = {"value_id_genre": id_genre_delete,
+                                              "value_marque_delete": name_marque_delete,
+                                              "value_modele_delete": name_modele_delete,
+                                              "value_chevaux_delete": name_chevaux_delete,
+                                              }
                 print("valeur_delete_dictionnaire ", valeur_delete_dictionnaire)
 
-                str_sql_delete_films_genre = """DELETE FROM t_voiture_avoir_entretien WHERE fk_voiture = %(value_id_genre)s;"""
+                str_sql_delete_films_genre ="""DELETE FROM t_voiture 
+                                                WHERE marque = %(value_marque_delete)s
+                                                AND modele = %(value_modele_delete)s
+                                                AND chevaux = %(value_chevaux_delete)s;
+                                            """
+
+
                 str_sql_delete_idgenre = """DELETE FROM t_voiture WHERE id_voiture = %(value_id_genre)s;"""
                 # Manière brutale d'effacer d'abord la "fk_genre", même si elle n'existe pas dans la "t_voiture_entretien"
                 # Ensuite on peut effacer le genre vu qu'il n'est plus "lié" (INNODB) dans la "t_voiture_entretien"
@@ -297,10 +318,10 @@ def genre_delete_wtf():
                 # vu qu'il n'y a qu'un seul champ "nom genre" pour l'action DELETE
                 data_nom_genre = mydb_conn.fetchone()
                 print("data_nom_genre ", data_nom_genre, " type ", type(data_nom_genre), " genre ",
-                      data_nom_genre["intitule_genre"])
+                      data_nom_genre["modele"])
 
             # Afficher la valeur sélectionnée dans le champ du formulaire "voiture_delete_wtf.html"
-            form_delete.nom_genre_delete_wtf.data = data_nom_genre["intitule_genre"]
+            form_delete.nom_genre_delete_wtf.data = data_nom_genre["marque"]
 
             # Le bouton pour l'action "DELETE" dans le form. "voiture_delete_wtf.html" est caché.
             btn_submit_del = False
