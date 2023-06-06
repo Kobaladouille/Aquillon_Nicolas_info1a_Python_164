@@ -105,7 +105,7 @@ def film_update_wtf():
                                           }
             print("valeur_update_dictionnaire ", valeur_update_dictionnaire)
 
-            str_sql_update_nom_film = """UPDATE t_voiture SET nom_film = %(value_nom_film)s,
+            str_sql_update_nom_film = """UPDATE t_entretien SET nom_film = %(value_nom_film)s,
                                                             duree_film = %(value_duree_film)s,
                                                             description_film = %(value_description_film)s,
                                                             cover_link_film = %(value_cover_link_film)s,
