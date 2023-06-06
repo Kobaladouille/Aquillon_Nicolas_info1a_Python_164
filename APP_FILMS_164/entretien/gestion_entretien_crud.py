@@ -101,10 +101,14 @@ def film_update_wtf():
                                           }
             print("valeur_update_dictionnaire ", valeur_update_dictionnaire)
 
-            str_sql_update_nom_film = """UPDATE t_entretien SET description_entretien = %(value_description_entretien_update)s,
-                                                            prix_entretien = %(value_prix_entretien_update)s,
-                                                            garage_entretien = %(value_garage_entretien_update)s,
-                                                            WHERE id_entretien = %(value_id_film)s"""
+            str_sql_update_nom_film ="""UPDATE t_entretien SET 
+                                        description_entretien = %(value_description_entretien_update)s,
+                                        prix_entretien = %(value_prix_entretien_update)s,
+                                        garage_entretien = %(value_garage_entretien_update)s
+                                        WHERE id_entretien = %(value_id_film)s;
+                                    """
+
+
             with DBconnection() as mconn_bd:
                 mconn_bd.execute(str_sql_update_nom_film, valeur_update_dictionnaire)
 
@@ -113,7 +117,7 @@ def film_update_wtf():
 
             # afficher et constater que la donnée est mise à jour.
             # Afficher seulement le film modifié, "ASC" et l'"id_film_update"
-            return redirect(url_for('films_genres_afficher', id_film_sel=id_film_update))
+            return redirect(url_for('films_genres_afficher', id_film_sel=0))
         elif request.method == "GET":
             # Opération sur la BD pour récupérer "id_film" et "intitule_genre" de la "t_genre"
             str_sql_id_film = "SELECT * FROM t_entretien WHERE id_entretien = %(value_id_film)s"
