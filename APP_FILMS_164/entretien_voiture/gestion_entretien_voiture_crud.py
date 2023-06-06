@@ -32,7 +32,7 @@ def films_genres_afficher(id_film_sel):
     if request.method == "GET":
         try:
             with DBconnection() as mc_afficher:
-                strsql_genres_films_afficher_data = """SELECT t_entretien.description_entretien, t_entretien.prix_entretien, t_entretien.garage_entretien
+                strsql_genres_films_afficher_data = """SELECT t_entretien.description_entretien, t_entretien.prix_entretien, t_entretien.garage_entretien, t_entretien.id_entretien
                 FROM t_entretien
                 """
                 if id_film_sel == 0:

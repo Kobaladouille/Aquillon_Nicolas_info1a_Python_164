@@ -32,7 +32,7 @@
 			<tbody>
 				<tr>
 					  <th class="align-middle">
-						  {{ row.id_voiture }}
+						  {{ row.id_entretien }}
 					  </th>
 					  <th class="align-middle">
 						{{ row.marque }}
@@ -53,7 +53,7 @@
 						<a class="btn btn-primary" href="{{ url_for('avertissement_sympa_pour_geeks') }}" role="button">Ajouter</a>
 					  </th>
 					  <th class="align-middle">
-						<a class="btn btn-warning" href="{{ url_for('film_update_wtf', id_film_btn_edit_html=row.id_film) }}" role="button">Edit</a>
+						<a class="btn btn-warning" href="{{ url_for('film_update_wtf', id_film_btn_edit_html=row.id_entretien) }}" role="button">Edit</a>
 					  </th>
 					  <th class="align-middle">
 						<a class="btn btn-danger" href="{{ url_for('avertissement_sympa_pour_geeks') }}" role="button">Delete</a>
