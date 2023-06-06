@@ -17,7 +17,21 @@ class FormWTFAddFilm(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_film_regexp = ""
-    nom_film_add_wtf = StringField("Ajouter l'entretien (Vidange, Changement de pneus, etc..) ", validators=[Length(min=2, max=2000, message="min 2 max 20"),
+    nom_film_add_wtf = StringField("Ajouter la description de l'entretien", validators=[Length(min=2, max=2000, message="min 2 max 20"),
+                                                               Regexp(nom_film_regexp,
+                                                                      message="Pas de chiffres, de caractères "
+                                                                              "spéciaux, "
+                                                                              "d'espace à double, de double "
+                                                                              "apostrophe, de double trait union")
+                                                               ])
+    nom_entretien_prix_wtf = StringField("Ajouter le prix de l'entretien", validators=[Length(min=2, max=2000, message="min 2 max 20"),
+                                                               Regexp(nom_film_regexp,
+                                                                      message="Pas de chiffres, de caractères "
+                                                                              "spéciaux, "
+                                                                              "d'espace à double, de double "
+                                                                              "apostrophe, de double trait union")
+                                                               ])
+    nom_garage_entretien_wtf = StringField("Ajouter le garage où l'entretien à été fait", validators=[Length(min=2, max=2000, message="min 2 max 20"),
                                                                Regexp(nom_film_regexp,
                                                                       message="Pas de chiffres, de caractères "
                                                                               "spéciaux, "

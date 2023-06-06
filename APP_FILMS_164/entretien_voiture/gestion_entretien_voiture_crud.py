@@ -32,10 +32,8 @@ def films_genres_afficher(id_film_sel):
     if request.method == "GET":
         try:
             with DBconnection() as mc_afficher:
-                strsql_genres_films_afficher_data = """SELECT t_voiture.id_voiture, t_voiture.marque, t_voiture.modele, t_voiture.chevaux, t_entretien.description_entretien, t_entretien.prix_entretien, t_entretien.garage_entretien
-                FROM t_voiture
-                JOIN t_voiture_avoir_entretien ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture 
-                JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien;
+                strsql_genres_films_afficher_data = """SELECT t_entretien.description_entretien, t_entretien.prix_entretien, t_entretien.garage_entretien
+                FROM t_entretien
                 """
                 if id_film_sel == 0:
                     # le paramètre 0 permet d'afficher tous les entretien

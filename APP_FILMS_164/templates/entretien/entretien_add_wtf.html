@@ -18,6 +18,20 @@
 							<span style="color: red;">[{{ error }}]</span>
 						{% endfor %}
 					</p>
+                    <p>
+						{{ form_add_film.nom_entretien_prix_wtf.label }}<br>
+						{{ form_add_film.nom_entretien_prix_wtf(size=32) }}<br>
+						{% for error in form_add_film.nom_entretien_prix_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+                    <p>
+						{{ form_add_film.nom_garage_entretien_wtf.label }}<br>
+						{{ form_add_film.nom_garage_entretien_wtf(size=32) }}<br>
+						{% for error in form_add_film.nom_garage_entretien_wtf.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
 				</div>
 				{{ form_add_film.submit(class="btn btn-primary") }}
 			</form>
