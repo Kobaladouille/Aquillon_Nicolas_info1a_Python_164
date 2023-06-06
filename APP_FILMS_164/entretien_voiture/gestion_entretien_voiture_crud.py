@@ -44,7 +44,7 @@ def films_genres_afficher(id_film_sel):
                     valeur_id_film_selected_dictionnaire = {"value_id_film_selected": id_film_sel}
                     # En MySql l'instruction HAVING fonctionne comme un WHERE... mais doit être associée à un GROUP BY
                     # L'opérateur += permet de concaténer une nouvelle valeur à la valeur de gauche préalablement définie.
-                    strsql_genres_films_afficher_data += """ HAVING id_film= %(value_id_film_selected)s"""
+                    strsql_genres_films_afficher_data += """ HAVING id_entretien = %(value_id_film_selected)s"""
 
                     mc_afficher.execute(strsql_genres_films_afficher_data, valeur_id_film_selected_dictionnaire)
 
@@ -91,7 +91,8 @@ def edit_genre_film_selected():
     if request.method == "GET":
         try:
             with DBconnection() as mc_afficher:
-                strsql_genres_afficher = """SELECT id_voiture, modele, marque, chevaux FROM t_voiture"""
+                strsql_genres_afficher = """SELECT t_entretien.description_entretien, t_entretien.prix_entretien, t_entretien.garage_entretien, t_entretien.id_entretien
+                FROM t_entretien"""
                 mc_afficher.execute(strsql_genres_afficher)
             data_genres_all = mc_afficher.fetchall()
             print("dans edit_genre_film_selected ---> data_genres_all", data_genres_all)
@@ -277,17 +278,20 @@ def genres_films_afficher_data(valeur_id_film_selected_dict):
         strsql_film_selected = """SELECT id_entretien, description_entretien, GROUP_CONCAT(id_voiture) as GenresFilms FROM t_voiture_avoir_entretien
                                         INNER JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien
                                         INNER JOIN t_voiture ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture
-                                        WHERE id_entretien = %(value_id_film_selected)s"""
+                                        WHERE id_voiture_entretien = %(value_id_film_selected)s"""
 
-        strsql_genres_films_non_attribues = """SELECT id_voiture, marque FROM t_voiture WHERE id_voiture not in(SELECT id_voiture as idGenresFilms FROM t_voiture_avoir_entretien
-                                                    INNER JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien
-                                                    INNER JOIN t_voiture ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture
-                                                    WHERE id_entretien = %(value_id_film_selected)s)"""
+        strsql_genres_films_non_attribues = """SELECT id_voiture, marque FROM t_voiture WHERE id_voiture NOT IN (
+                                                SELECT id_voiture FROM t_voiture_avoir_entretien
+                                                INNER JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien
+                                                INNER JOIN t_voiture ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture
+                                                WHERE t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture
+                                                )
+"""
 
         strsql_genres_films_attribues = """SELECT id_entretien, id_voiture FROM t_voiture_avoir_entretien
                                             INNER JOIN t_entretien ON t_entretien.id_entretien = t_voiture_avoir_entretien.fk_entretien
                                             INNER JOIN t_voiture ON t_voiture.id_voiture = t_voiture_avoir_entretien.fk_voiture
-                                            WHERE id_entretien = %(value_id_film_selected)s"""
+                                            WHERE id_voiture_entretien = %(value_id_film_selected)s"""
 
         # Du fait de l'utilisation des "context managers" on accède au curseur grâce au "with".
         with DBconnection() as mc_afficher:

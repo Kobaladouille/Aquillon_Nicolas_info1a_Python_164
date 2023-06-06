@@ -44,22 +44,16 @@
                     <thead>
                         <tr>
                             <th class="">
-                                id
+                                Id
                             </th>
                             <th class="">
-                                Titre
+                                Garage où l'entretien à été fait
                             </th>
                             <th class="">
-                                Durée
+                                Prix de l'entretien
                             </th>
                             <th class="">
-                                Date sortie
-                            </th>
-                            <th class="">
-                                Description
-                            </th>
-                            <th class="">
-                                Affiche
+                                Description de l'entretienu
                             </th>
                         </tr>
                     </thead>
@@ -69,19 +63,16 @@
 				<tbody>
 					<tr>
 						<td class="align-middle">
-							{{ row.id_film }}
+							{{ row.id_entretien }}
 						</td>
 						<td class="align-middle">
-							{{ row.nom_film }}
+							{{ row.garage_entretien }}
 						</td>
 						<td class="align-middle">
-							{{ row.duree_film|default("", True) }}
+							{{ row.prix_entretien }}
 						</td>
 						<td class="align-middle">
-							{{ row.date_sortie_film|default("", True) }}
-						</td>
-						<td class="align-middle">
-							{{ row.description_film|default("", True) }}
+							{{ row.description_entretien }}
 						</td>
 						<td class="align-middle">
                             <img class="img" src={{ row.cover_link_film|default(None, True) }} style="border: 0;display:block; width:150px; max-height:auto;" alt = "image masquée FFP67 (in COVID-29 Memory) (absente) mod 164">
@@ -112,11 +103,11 @@
                 <div class="qtagselect isw360">
                     <select id="OM_JTSD" name="name_select_tags" class="qtagselect__select" multiple>
                         {% for row in data_genres_non_attribues %}
-                            <option value="{{ row.id_voiture }}" name="name_tags_non_attribues_html" class="isblue" >{{ row.marque }}</option>
+                            <option value="{{ row.id_entretien }}" name="name_tags_non_attribues_html" class="isblue" >{{ row.id_entretien }}</option>
                         {% endfor %}
 
                         {% for row in data_genres_attribues %}
-                            <option value="{{ row.id_voiture }}" name="name_tags_attribues_html" class="ispurple" selected>{{ row.marque }}</option>
+                            <option value="{{ row.id_entretien }}" name="name_tags_attribues_html" class="ispurple" selected>{{ row.id_entretien }}</option>
                         {% endfor %}
                     </select>
                 </div>

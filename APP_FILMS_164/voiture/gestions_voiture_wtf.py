@@ -37,7 +37,7 @@ class FormWTFAjouterGenres(FlaskForm):
                                                                                 )
                                                                    ])
 
-    submit = SubmitField("Enregistrer la voiture")
+    submit = SubmitField("Ajouter la voiture")
 
 
 class FormWTFUpdateGenre(FlaskForm):
@@ -46,7 +46,7 @@ class FormWTFUpdateGenre(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_genre_update_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    nom_genre_update_wtf = StringField("Entrez la marque que vous voulez modifier ", validators=[Length(min=2, max=20, message="min 2 max 20"),
+    nom_genre_update_wtf = StringField("Modifier la marque de la voiture", validators=[Length(min=2, max=20, message="min 2 max 20"),
                                                                           Regexp(nom_genre_update_regexp,
                                                                                  message="Pas de chiffres, de "
                                                                                          "caractères "
@@ -55,7 +55,7 @@ class FormWTFUpdateGenre(FlaskForm):
                                                                                          "apostrophe, de double trait "
                                                                                          "union")
                                                                           ])
-    date_genre_wtf_essai = StringField("Entrez le modèle que vous voulez modifier ", validators=[Length(min=2, max=20, message="min 2 max 20"),
+    date_genre_wtf_essai = StringField("Modifer le modele de la voiture ", validators=[Length(min=2, max=20, message="min 2 max 20"),
                                                                           Regexp(nom_genre_update_regexp,
                                                                                  message="Pas de chiffres, de "
                                                                                          "caractères "
@@ -64,7 +64,7 @@ class FormWTFUpdateGenre(FlaskForm):
                                                                                          "apostrophe, de double trait "
                                                                                          "union")
                                                                           ])
-    nom_voiture_chevaux_update_wtf = StringField("Entrez le prix que vous voulez modifier ", validators=[Length(min=2, max=20, message="min 2 max 20"),
+    nom_voiture_chevaux_update_wtf = StringField("Modifier le prix de la voiture ", validators=[Length(min=2, max=20, message="min 2 max 20"),
                                                                           Regexp(nom_genre_update_regexp,
                                                                                  message="Pas de chiffres, de "
                                                                                          "caractères "
@@ -73,7 +73,7 @@ class FormWTFUpdateGenre(FlaskForm):
                                                                                          "apostrophe, de double trait "
                                                                                          "union")
                                                                           ])
-    submit = SubmitField("Update genre")
+    submit = SubmitField("Modifier la voiture")
 
 
 class FormWTFDeleteGenre(FlaskForm):
