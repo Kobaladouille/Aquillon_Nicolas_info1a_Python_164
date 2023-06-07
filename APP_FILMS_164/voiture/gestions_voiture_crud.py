@@ -236,9 +236,6 @@ def genre_delete_wtf():
     btn_submit_del = None
     # L'utilisateur vient de cliquer sur le bouton "DELETE". Récupère la valeur de "id_genre"
     id_genre_delete = request.values['id_genre_btn_delete_html']
-    name_marque_delete = request.values['id_genre_btn_delete_html']
-    name_modele_delete =request.values['id_genre_btn_delete_html']
-    name_chevaux_delete =request.values['id_genre_btn_delete_html']
 
     # Objet formulaire pour effacer le genre sélectionné.
     form_delete = FormWTFDeleteGenre()
@@ -262,16 +259,10 @@ def genre_delete_wtf():
 
             if form_delete.submit_btn_del.data:
                 valeur_delete_dictionnaire = {"value_id_genre": id_genre_delete,
-                                              "value_marque_delete": name_marque_delete,
-                                              "value_modele_delete": name_modele_delete,
-                                              "value_chevaux_delete": name_chevaux_delete,
                                               }
                 print("valeur_delete_dictionnaire ", valeur_delete_dictionnaire)
 
-                str_sql_delete_films_genre ="""DELETE FROM t_voiture 
-                                                WHERE marque = %(value_marque_delete)s
-                                                AND modele = %(value_modele_delete)s
-                                                AND chevaux = %(value_chevaux_delete)s;
+                str_sql_delete_films_genre ="""DELETE FROM t_voiture WHERE id_voiture;
                                             """
 
 
@@ -315,10 +306,10 @@ def genre_delete_wtf():
                 # vu qu'il n'y a qu'un seul champ "nom genre" pour l'action DELETE
                 data_nom_genre = mydb_conn.fetchone()
                 print("data_nom_genre ", data_nom_genre, " type ", type(data_nom_genre), " genre ",
-                      data_nom_genre["modele"])
+                      data_nom_genre["id_voiture"])
 
             # Afficher la valeur sélectionnée dans le champ du formulaire "voiture_delete_wtf.html"
-            form_delete.nom_genre_delete_wtf.data = data_nom_genre["marque"]
+            form_delete.nom_genre_delete_wtf.data = data_nom_genre["id_voiture"]
 
             # Le bouton pour l'action "DELETE" dans le form. "voiture_delete_wtf.html" est caché.
             btn_submit_del = False
