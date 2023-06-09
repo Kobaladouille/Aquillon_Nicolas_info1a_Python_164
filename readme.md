@@ -60,7 +60,14 @@ Etape 2
      
     Clickez sur ""base de données""
     
-Etape
+Etape 3
+    
+    Dans le ""Utilisateur"" mettez < root >, dans le ""Mot de passe"" ne rien mettre et faites ""Ouvrir""
+    
+Etape 4
+
+    Click droit sur ""Laragon-MySQL"" --> ""Créer une nouvelle"" --> ""Base de données" --> Pour le nom mettez < aquillon_nicolas_info1a_db_164 > / pour la collation mettez < utf8mb4_0900_ai_ci >
+
     
      
      
