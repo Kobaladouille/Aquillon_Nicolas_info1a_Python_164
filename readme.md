@@ -66,7 +66,11 @@ Etape 3
     
 Etape 4
 
-    Click droit sur ""Laragon-MySQL"" --> ""Créer une nouvelle"" --> ""Base de données" --> Pour le nom mettez < aquillon_nicolas_info1a_db_164 > / pour la collation mettez < utf8mb4_0900_ai_ci >
+    Click droit sur ""Laragon-MySQL"" --> ""Créer une nouvelle"" --> ""Base de données" --> Pour le nom mettez < aquillon_nicolas_info1a_db_164 > / pour la collation mettez < utf8mb4_0900_ai_ci > et ""Créer""
+    
+Eape 5 
+
+    Click gauche sur la db que vous avez créer, puis aller dans l'onglet ""Requête""
 
     
      
