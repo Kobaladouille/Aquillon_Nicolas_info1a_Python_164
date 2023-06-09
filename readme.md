@@ -71,7 +71,7 @@ Etape 4
 Eape 5 
 
     Click gauche sur la db que vous avez créer, puis aller dans l'onglet ""Requête"" et copier coller le fichier texte suivant et clickez sur ""Execcuter"" (clickez sur la flêche bleu en haut de la fenêtre)
-Fichier à copier : [sql_request.txt](Aquillon_Nicolas_info1a_python_164/APP_FILMS_164/database/aquillon_nicolas_info1a_db_github_164.txt)
+Fichier à copier : [sql_request.txt](APP_FILMS_164/database/aquillon_nicolas_info1a_db_gihub_164.txt)
 
 ## 3ème étape
 Etape 1
