@@ -76,7 +76,7 @@ Fichier à copier : [sql_request.txt](APP_FILMS_164/database/aquillon_nicolas_in
 ## 3ème étape
 Etape 1
   
-    Revenir sur Pycharm et click droit sur le fichier ""run_mon_app.py""
+    Revenir sur Pycharm et click droit sur le fichier ""run_mon_app.py"" et faites ""Run 'run_mon_app' ""
     
 Etape 2
 
