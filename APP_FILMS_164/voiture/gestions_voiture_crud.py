@@ -24,7 +24,7 @@ from APP_FILMS_164.voiture.gestions_voiture_wtf import FormWTFUpdateGenre
     
     Paramètres : order_by : ASC : Ascendant, DESC : Descendant
                 id_genre_sel = 0 >> tous les voiture.
-                id_genre_sel = "n" affiche le genre dont l'id est "n"
+                id_genre_sel = "n" affiche le genre dont l'id est "nn"
 """
 
 
