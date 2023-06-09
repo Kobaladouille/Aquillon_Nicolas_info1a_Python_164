@@ -26,8 +26,44 @@ Pour installer Pycharm : [Version gratuite](https://www.jetbrains.com/pycharm/do
 Pour installer Git : [Installer](https://gitforwindows.org/)
 
 # Faire fonctionner mon projet
+## 1er étape
+Etape 1 
 
-Ouvrez Pycharm et aller dans ""Nouveau Projet""
+     Ouvrez Pycharm et aller dans ""Get From VCS"".
+     
+Etape 2
+
+     Dans ""Version Control"" mettez ""Git""
+     
+Etape 3
+        
+     Dans ""URL"" mettez < https://github.com/Kobaladouille/Aquillon_Nicolas_info1a_Python_164 >
+     
+Etape 4 
+
+    Faites ""Clone""
+    
+Etape 5 
+
+    Faites ""Trust The Project""
+    
+Etape 6
+
+    Laissez installer les plugins (en bas à droit, vous avez une barre de chargement)
+    
+## 2ème étape
+Etape 1
+
+    Ouvrez votre serveur SQL et faites démarrer 
+ 
+Etape 2 
+     
+    Clickez sur ""base de données""
+    
+Etape
+    
+     
+     
 
 
 
