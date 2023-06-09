@@ -9,7 +9,7 @@ Il s'agit d'une gestion d'entretien de sa voiture.
 Avec l'utilisation un système CRUD (Create Read Update Delete) complet sur 3 tables dont une table intermédiaire pour l'association d'une voiture à un entretien.
 
 # Ce qu'il faut pour faire fonctionner mon projet 
-1. vous devez avoir un serveur "MySql"
+1. Vous devez avoir un serveur "MySql"
 
 - Laragon, XAMPP, phpMyAdmin, MySQL Workbench, etc...
 
@@ -23,4 +23,11 @@ Pour installer Pycharm : [Version gratuite](https://www.jetbrains.com/pycharm/do
 
 3. Vous devez avoir "Git" 
 
-Pour installer Git : 
+Pour installer Git : [Installer](https://gitforwindows.org/)
+
+# Faire fonctionner mon projet
+
+Ouvrez Pycharm et aller dans ""Nouveau Projet""
+
+
+
