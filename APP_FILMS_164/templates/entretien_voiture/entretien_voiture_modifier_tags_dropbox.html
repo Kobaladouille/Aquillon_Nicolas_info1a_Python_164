@@ -30,15 +30,9 @@
 
 <div class="container">
 		<div class="col-md-12">
-			<p>
-				Tagselect, c'est une DROPBOX qui surgit quand on sélectionne l'espace "TAGS". Pour votre information, le composant TAGSELECT est à disposition sur ce site :
-                 <a href="https://www.jqueryscript.net/form/tags-selector-tagselect.html"
-                    target="_blank">https://www.jqueryscript.net/form/tags-selector-tagselect.html</a>
-
-			</p>
-            <p>
-                Films.
-            </p>
+			<h2>
+                Vous pouvez associer une voiture à un entretien
+			</h2>
             <table class="table table-responsive-sm">
                 {% if data_film_selected %}
                     <thead>
@@ -75,7 +69,7 @@
 							{{ row.description_entretien }}
 						</td>
 						<td class="align-middle">
-                            <img class="img" src={{ row.cover_link_film|default(None, True) }} style="border: 0;display:block; width:150px; max-height:auto;" alt = "image masquée FFP67 (in COVID-29 Memory) (absente) mod 164">
+                            <img class="img" src={{ row.cover_link_film|default(None, True) }} style="border: 0;display:block; width:150px; max-height:auto;" alt = "Pas d'image disponible">
 						</td>
 					</tr>
 				</tbody>
