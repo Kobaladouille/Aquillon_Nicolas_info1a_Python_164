@@ -20,23 +20,14 @@ class FormWTFAjouterGenres(FlaskForm):
     nom_chevaux_regexp = "^(. *[^0-9]|)(1000|[1-9]\d{0,2})([^0-9]. *|)$"
     nom_genre_wtf = StringField("Entrez la Marque de la voiture", validators=[Length(min=2, max=20, message="min 2 max 20"),
                                                                    Regexp(nom_genre_regexp,
-                                                                          message="Pas de chiffres, de caractères "
-                                                                                  "spéciaux, "
-                                                                                  "d'espace à double, de double "
-                                                                                  "apostrophe, de double trait union")
+                                                                          message="ce champ est obligatoire")
                                                                    ])
     nom_modele_wtf = StringField("Entrez le modèle de la voiture", validators=[Length(min=2, max=20, message="min 2 max 20"),
                                                                    Regexp(nom_genre_regexp,
-                                                                          message="Pas de chiffres, de caractères "
-                                                                                  "spéciaux, "
-                                                                                  "d'espace à double, de double "
-                                                                                  "apostrophe, de double trait union")
+                                                                          message="ce champ est obligatoire")
                                                                    ])
-    nom_chevaux_wtf = StringField("Entrez le nombre de chevaux de la voiture", validators=[Length(min=2, max=20, message="min 2 max 20"),
-                                                                   Regexp(nom_chevaux_regexp,
-                                                                          message="Seulement les chiffres / Nombres sont accépter "
-                                                                                )
-                                                                   ])
+    nom_chevaux_wtf = IntegerField("Entrez les chevaux de la voiture ", validators=[NumberRange(min=1, max=5000,
+                                                                                            message="ce champ est obligatoire")])
 
     submit = SubmitField("Ajouter la voiture")
 
