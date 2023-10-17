@@ -16,7 +16,7 @@ from APP_FILMS_164 import PORT_FLASK
 from flask_cors import CORS
 
 """Pour comprendre à quoi sert CORS... et en cas de curiosité maladive...
-ne PAS cliquer sur le lien ci-dessous, car c'est bien expliqué.
+ne PAS cliquer sur le lien ci-dessous, car c'est bien expliquéo.
 https://developer.mozilla.org/fr/docs/Web/HTTP/CORS
 """
 CORS(app)
